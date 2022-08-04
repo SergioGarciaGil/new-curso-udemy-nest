@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { CarsService } from './cars.service'
 
 
@@ -13,9 +13,11 @@ export class CarsController {
         return this.carsService.findAll();
     }
     @Get(':id')
-    getCarById(@Param('id') id: string) {
-        console.log({ id: id })
-        return this.carsService.findOneById(+id)
+    getCarById(@Param('id', ParseIntPipe) id: number) {
+        console.log({ id })
+
+
+        return this.carsService.findOneById(id)
     }
 }
 
