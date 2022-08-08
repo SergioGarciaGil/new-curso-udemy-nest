@@ -1,7 +1,7 @@
 import { IsString, MinLength } from "class-validator";
 
 export class CreateCarDto {
-    @IsString({ message: `the brand most a cool string` })
+    @IsString()
     readonly brand: string;
 
     @IsString()
